@@ -32,9 +32,13 @@ const ToolSchema = new Schema({
     type: String,
     required: true
   },
+  randomTag: {
+    type: String,
+    required: true
+  },
   status: {
     type: String,
-    default: 'ready'  //'ready', 'execute', 'success', 'failure'
+    default: 'ready'  //'ready', 'executing', 'success', 'failure', 'stop'
   },
   CDM: CDMSchema,
   H2: H2Schema,

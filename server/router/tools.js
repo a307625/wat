@@ -5,6 +5,7 @@ import _ from 'underscore'
 import nodemailer from 'nodemailer'
 import convert from 'koa-convert'
 import _validate from 'koa-req-validator'
+import uuid from 'node-uuid'
 import { getToken, verifyToken, getCleanUser } from '../utils'
 import { mailTransport, checkEmailStatus } from '../utils/email'
 import Config from '../config'
@@ -15,17 +16,17 @@ const router = new Router({
 })
 
 const ToolStrategy = {
-  ['CDM']: function({ mode, runs, size}) {
+  ['CDM']: ({ mode, runs, size }) => {
     return {
       mode,
       runs,
       size
     }
   },
-  ['H2']: function() {
+  ['H2']: () => {
     return {}
   },
-  ['EMAIL']: function() {
+  ['EMAIL']: () => {
     return {}
   }
 }
@@ -37,12 +38,14 @@ router.post('/',
   async(ctx, next) => {
     try {
       const { tasks } = ctx.request.body
+      const randomTag = uuid.v4()
       tasks.forEach(async task => {
         const { toolname } = task
         const tool = new Tool({
           //要記得先從 token 去解回 user 的 ObjectId
           tester: '57bd7a333f7045152f6a9762',
           toolname,
+          randomTag,
           [toolname]: ToolStrategy[toolname](task)
         })
 
