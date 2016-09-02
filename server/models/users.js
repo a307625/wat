@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import timestamps from 'mongoose-timestamp'
-import bcrypt from 'bcrypt-as-promised'
+//import bcrypt from 'bcrypt-as-promised'
+import bcrypt from 'bcryptjs-then'
 import Boom from 'boom'
 
 const SALT_WORK_FACTOR = 10

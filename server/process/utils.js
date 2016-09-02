@@ -1,4 +1,4 @@
-import { exec } from 'child_process'
+import { exec, execFile } from 'child_process'
 
 export const myExec = (script) => {
 	return new Promise((resolve, reject) => {
@@ -6,6 +6,8 @@ export const myExec = (script) => {
 			if (err) {
 				return reject(stderr)
 			} else {
+				//process.stdout.write(stdout)
+				//console.log(stdout)
 				resolve(stdout)
 			}
 		})

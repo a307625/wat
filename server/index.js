@@ -1,4 +1,5 @@
 //mongod --dbpath ~/data/db/
+// /c/Program\ Files/MongoDB/Server/3.2/bin/mongod --dbpath ~/data/db
 import Koa from 'koa'
 import convert from 'koa-convert'
 import path from 'path'
@@ -80,6 +81,7 @@ app.use(convert(jwt({
 }).unless({
   path: [
     '/v1/signup',
+    '/v1/tools',
     '/favicon.ico'
   ]
 })))
