@@ -6,8 +6,6 @@ export const myExec = (script) => {
 			if (err) {
 				return reject(stderr)
 			} else {
-				//process.stdout.write(stdout)
-				//console.log(stdout)
 				resolve(stdout)
 			}
 		})

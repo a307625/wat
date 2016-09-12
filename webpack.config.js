@@ -54,7 +54,6 @@ module.exports = {
     ]
   },
   devtool: 'source-map',
-  // devtool: 'cheap-module-eval-source-map',
   postcss: [
     require('postcss-nested'),
     require('postcss-cssnext')
