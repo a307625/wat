@@ -28,6 +28,10 @@ const ToolSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
+  fw: {
+    type: String,
+    required: true
+  },
   toolname: {
     type: String,
     required: true
@@ -38,7 +42,7 @@ const ToolSchema = new Schema({
   },
   status: {
     type: String,
-    default: 'ready'  //'ready', 'executing', 'success', 'failure', 'stop'
+    default: 'ready'  //'ready', 'executing', 'success', 'failure'
   },
   CDM: CDMSchema,
   H2: H2Schema,

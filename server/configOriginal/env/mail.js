@@ -1,11 +1,11 @@
 export default {
-  watSender: 'EricHong@via.com.tw',
+  watSender: 'joychen@via.com.tw',
   watConfig: {
     host: 'email.via.com.tw',
     port: 587,
     auth: {
-      user: 'EricHong',//process.env.VIA_USERNAME,
-      pass: '@Hsnu1123'//process.env.VIA_PASSWORD
+      user: process.env.VIA_USERNAME,
+      pass: process.env.VIA_PASSWORD
     },
     logger: true,
     debug: true

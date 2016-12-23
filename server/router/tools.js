@@ -1,5 +1,6 @@
 import Router from 'koa-router'
 import Tool from '../models/tools'
+import H2 from '../models/h2'
 import Boom from 'boom'
 import _ from 'underscore'
 import nodemailer from 'nodemailer'
@@ -9,6 +10,7 @@ import uuid from 'node-uuid'
 import { getToken, verifyToken, getCleanUser } from '../utils'
 import { mailTransport, checkEmailStatus } from '../utils/email'
 import Config from '../config'
+
 
 const validate = (...args) => convert(_validate(...args))
 const router = new Router({
@@ -38,16 +40,20 @@ router.post('/',
   async(ctx, next) => {
     try {
       const { tasks } = ctx.request.body
+      console.log(tasks)
       const randomTag = uuid.v4()
       tasks.forEach(async task => {
         const { toolname } = task
+        const { fw } = task
         const tool = new Tool({
           //要記得先從 token 去解回 user 的 ObjectId
           tester: '57bd7a333f7045152f6a9762',
+          fw,
           toolname,
           randomTag,
           [toolname]: ToolStrategy[toolname](task)
         })
+        console.log(toolname)
 
         await tool.save()
       })

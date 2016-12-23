@@ -5,6 +5,7 @@ import convert from 'koa-convert'
 import path from 'path'
 import bodyParser from 'koa-bodyparser'
 import logger from 'koa-logger'
+import cors from 'kcors'
 
 import serve from 'koa-static'
 import historyApiFallback from 'koa-connect-history-api-fallback'
@@ -19,6 +20,9 @@ import jwt from 'koa-jwt'
 import Router from 'koa-router'
 import signupRouter from '../server/router/signup'
 import toolRouter from '../server/router/tools'
+import searchtesterRouter from '../server/router/searchtester'
+import signupEricRouter from '../server/router/signuperic'
+import signinEricRouter from '../server/router/signineric'
 
 import './config/database'
 import Config from './config'
@@ -26,6 +30,7 @@ import Config from './config'
 import exe from './process'
 
 const app = new Koa()
+app.use(convert(cors()))
 
 app.use(async(ctx, next) => {
   try {
@@ -82,7 +87,13 @@ app.use(convert(jwt({
   path: [
     '/v1/signup',
     '/v1/tools',
-    '/favicon.ico'
+    '/favicon.ico',
+    '/v1/searchtester',
+    '/v1/signuperic',
+    '/v1/signuperic/verification',
+    '/v1/signuperic/authentication',
+    '/v1/signineric',
+    '/v1/signineric/authentication'
   ]
 })))
 
@@ -93,6 +104,21 @@ app.use(signupRouter.allowedMethods({
 
 app.use(toolRouter.routes())
 app.use(toolRouter.allowedMethods({
+  throw: true
+}))
+
+app.use(searchtesterRouter.routes())
+app.use(searchtesterRouter.allowedMethods({
+  throw: true
+}))
+
+app.use(signupEricRouter.routes())
+app.use(signupEricRouter.allowedMethods({
+  throw: true
+}))
+
+app.use(signinEricRouter.routes())
+app.use(signinEricRouter.allowedMethods({
   throw: true
 }))
 
