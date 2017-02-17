@@ -1,0 +1,70 @@
+#authButton{
+  font-size: 30px;
+  height: 100px;
+  line-height: 100px;
+  border-left: solid rgba(255, 255, 255, 0.1) 1px;
+  border-right: solid rgba(0,0,0,0.2) 1px;
+  border-top: none;
+  border-bottom: none;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #5bc0de;
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  display: inline;
+  text-decoration:none;
+  outline: none; /*消除按下去後的藍色外框*/
+}
+#authButton:hover{
+  color: white;
+  background-color: #20829f;
+  text-decoration:none;
+}
+.top{
+  background: #272b30;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  height: 200px;
+  width:100%;
+  position: relative;
+  font-family:Microsoft JhengHei;
+  font-size: 350px;
+  font-weight: bolder;
+  text-align: center;
+  line-height: 40px;
+}
+.page1{
+  background: #272b30;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  height: 150px;
+  width:100%;
+  position: relative;
+
+  font-family:Microsoft JhengHei;
+  color:#279dc1;
+  font-size: 350px;
+  font-weight: bolder;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+  line-height: 300px;
+  overflow: hidden;
+}
+.page2{
+  background: #279dc1;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  height: 350px;
+  width:100%;
+  position: relative;
+
+
+  font-family:Microsoft JhengHei;
+  color:#272b30;
+  font-size: 350px;
+  font-weight: bolder;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+  line-height: 0px;
+  overflow: hidden;
+
+}

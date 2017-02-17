@@ -1,0 +1,99 @@
+#signOutTitle,#signInTitle, #signUpTitle
+{
+  font-family:Microsoft JhengHei;
+  font-weight: bolder;
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  line-height: 50px;
+  margin-left: 25px;
+}
+#signOutOption,#signInOption, #signUpOption
+{
+  font-family:Microsoft JhengHei;
+  font-weight: bolder;
+  font-size: 20px;
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  margin-left: 75px;
+}
+#signIn_email,
+#signIn_password, #signUp_name,
+#signUp_email, #signUp_password1,
+#signUp_password2
+{
+  font-family:Microsoft JhengHei;
+  font-weight: bolder;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  margin-bottom: 20px;
+}
+#signOutButton,#signInButton,#registerButton, #signUpButton{
+  border-left: solid rgba(255, 255, 255, 0.1) 1px;
+  border-right: solid rgba(0,0,0,0.2) 1px;
+  border-top: solid rgba(255, 255, 255, 0.1) 1px;
+  border-bottom: solid rgba(0,0,0,0.2) 1px;
+  outline: none; /*消除按下去後的藍色外框*/
+  font-family:Microsoft JhengHei;
+  font-weight: bolder;
+  font-size: 15px;
+  color: #c8c8c8;
+  background-color: #3a3f44;
+  text-align: center;
+  text-decoration:none;
+  padding: 0px 20px 0px 20px;
+  margin-right: 10px;
+}
+#signOutButton:hover{
+  color: white;
+  background-color: black;
+  text-decoration:none;
+}
+#signInButton:hover{
+  color: white;
+  background-color: black;
+  text-decoration:none;
+}
+#signUpButton:hover{
+  color: white;
+  background-color: black;
+  text-decoration:none;
+}
+#registerButton:hover{
+  color: white;
+  background-color: black;
+  text-decoration:none;
+}
+#error_hint_signup, #error_hint_signin{
+  font-size: 10px;
+  display: none;
+}
+.page{
+  background: #272b30;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  height: 850px;
+  display: flex;
+  justify-content: center;/*flex box, display需要設為 flex*/
+}
+.contain_signout,
+.contain_signin,
+.contain_signup
+{
+  height:850px;
+  width: 400px;
+  background: #279dc1;
+  text-align:center;
+  position: relative;
+  display: none;
+}
+
+.signOutPage,
+.signInPage,
+.registerPage,
+.signUpPage
+{
+  position: relative;
+  text-align: center;
+}

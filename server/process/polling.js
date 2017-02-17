@@ -7,6 +7,7 @@ import H2 from '../models/h2'
 import CDM from '../models/CDM'
 import { getDataFromCDM } from '../utils/parse'
 import { getDataFromH2 } from '../utils/h2parse'
+import moment from 'moment'
 
 const ToolStrategies = {
   ['CDM']: async (program, { mode, runs, size }) => {
@@ -21,23 +22,25 @@ const ToolStrategies = {
 }
 
 const ToolDBStrategies = {
-  ['CDM']: async ( tester, fw, {status, data} ) => {
+  ['CDM']: async ( tester, fw, {status, data}, createddate ) => {
     const TestResult = new CDM({
       tester: tester,
       fw: fw,
       toolname: 'CDM',
       status: status,
-      data: data
+      data: data,
+      createddate: createddate
     })
     await TestResult.save()
   },
-  ['H2']: async ( tester, fw, {status, data} ) => {
+  ['H2']: async ( tester, fw, {status, data}, createddate ) => {
     const TestResult = new H2({
       tester: tester,
       fw: fw,
       toolname: 'H2',
       status: status,
-      data: 'NULL'
+      data: 'NULL',
+      createddate: createddate
     })
     await TestResult.save()
   },
@@ -63,14 +66,15 @@ const foo = co.wrap(function* () {
       }})
 
       if (tool !== null) {
-        const { fw, toolname, randomTag } = tool
+        const { fw, toolname, randomTag, createddate, tester } = tool
         const program = path.resolve(__dirname, `../utils/exe/${toolname}.exe`)
         const txt = path.resolve(__dirname, `../utils/exe/${toolname}.txt`)
         yield ToolStrategies[toolname](program, tool[toolname])
         const parsedData = yield parseLogStrategies[toolname](txt)
         console.log(parsedData)
-        yield ToolDBStrategies[toolname]( '57bd7a333f7045152f6a9762', fw, parsedData )
-        yield tool.update({ $set: { status: parsedData.status }})
+        console.log(createddate)
+        yield ToolDBStrategies[toolname]( tester, fw, parsedData, createddate )
+        yield tool.update({ $set: { status: parsedData.status, updateddate: moment(Date.now() + 8 * 60 * 60 * 1000) }})
       }
     } catch (err) {
       console.log('error')

@@ -35,11 +35,12 @@ const ToolStrategy = {
 
 router.post('/',
   validate({
-    'tasks:body': ['require', 'tasks are required or not valid']
+    'tasks:body': ['require', 'tasks are required or not valid'],
+    'user:body' : ['require', 'user are required or not valid']
   }),
   async(ctx, next) => {
     try {
-      const { tasks } = ctx.request.body
+      const { tasks, user } = ctx.request.body
       console.log(tasks)
       const randomTag = uuid.v4()
       tasks.forEach(async task => {
@@ -47,7 +48,7 @@ router.post('/',
         const { fw } = task
         const tool = new Tool({
           //要記得先從 token 去解回 user 的 ObjectId
-          tester: '57bd7a333f7045152f6a9762',
+          tester: user,
           fw,
           toolname,
           randomTag,

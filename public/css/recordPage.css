@@ -1,0 +1,49 @@
+table{
+  width : 100%;
+  height : 20px;
+  font-family:sans-serif;
+  font-weight: bolder;
+  text-shadow: 1px 1px 1px black;
+  color: white;
+  font-size: 14px;
+  border-top:  solid #3a3f44 5px;
+}
+form{
+  font-family:sans-serif;
+  font-weight: bolder;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+#divRecord1{
+  width: 45%;
+  height: 20%;
+  margin-top: 3%;
+  margin-left: 3%;
+  float: left;
+}
+#divRecord2{
+  width: 45%;
+  margin-left: 3%;
+  float: left;
+}
+td{
+
+  text-align: center;
+}
+#tool{
+  width: 20%;
+}
+#fw{
+  width: 20%;
+}
+#time{
+  width: 30%;
+}
+#result{
+  width: 20%;
+}
+#file{
+  width: 10%;
+}
+#timebar{
+  width: 40%;
+}

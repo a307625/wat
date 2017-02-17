@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="../css/testPage.css">
+</head>
+<body>
+    <form id="testForm">
+      <p>FW VERSION:</p>
+        <input type="text" id = "fw" required>
+      <br><br>
+      <p>TEST TOOL:</p>
+      <select name = "toolname" required>
+        <option value = ""></option>
+        <option value = "CDM" id = "toolCDM">CDM</option>
+        <option value = "H2" id = "toolH2">H2</option>
+      </select>
+      <br><br>
+      <p>MODE:</p>
+      <select name = "mode" required>
+        <option value = ""></option>
+        <option value = "0" id = "mode0">SR+SW/RR512+RW512/RR4+RW4</option>
+        <option value = "1" id = "mode1">SR+SW</option>
+        <option value = "2" id = "mode2">RR512+RW512</option>
+        <option value = "3" id = "mode3">RR4+RW4</option>
+      </select>
+      <br><br>
+      <p>SIZE:</p>
+      <select name = "size" required>
+        <option value = ""></option>
+        <option value = "50" id = "size50">50K</option>
+        <option value = "100" id = "size100">100K</option>
+        <option value = "500" id = "size500">500K</option>
+        <option value = "1000" id = "size1000">1000K</option>
+        <option value = "2000" id = "size2000">2000K</option>
+        <option value = "4000" id = "size4000">4000K</option>
+      </select>
+      <br><br>
+        <p>TIMES:</p>
+        <input type="number" id = "runs" value="" required>
+      <br><br><br><br>
+        <input type="submit" id = "start" value="START">
+    </form>
+
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="../router/testPage.js"></script>
+</body>
+</html>

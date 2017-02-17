@@ -8,19 +8,19 @@ import logger from 'koa-logger'
 import cors from 'kcors'
 
 import serve from 'koa-static'
+/*
 import historyApiFallback from 'koa-connect-history-api-fallback'
-
 import webpack from 'webpack'
 import WebpackDevMiddleware from "koa-webpack-dev-middleware"
 import WebpackHotMiddleware from "koa-webpack-hot-middleware"
 import webpackConfig from '../webpack.config'
-
+*/
 import jwt from 'koa-jwt'
 
 import Router from 'koa-router'
 import signupRouter from '../server/router/signup'
 import toolRouter from '../server/router/tools'
-import searchtesterRouter from '../server/router/searchtester'
+import searchtesterRouter from '../server/router/data'
 import signupEricRouter from '../server/router/signuperic'
 import signinEricRouter from '../server/router/signineric'
 
@@ -62,10 +62,10 @@ app.on('internalError', (err, ctx) => {
 })
 
 app.use(convert(bodyParser()))
+/*
 app.use(convert(historyApiFallback({
   verbose: false
 })))
-
 const compiler = webpack(webpackConfig)
 app.use(convert(WebpackDevMiddleware(compiler, {
   hot: true,
@@ -79,8 +79,10 @@ app.use(convert(WebpackHotMiddleware(compiler, {
   path: '/__webpack_hmr',
   heartbeat: 10 * 1000
 })))
-
-app.use(serve(__dirname + '/../public'))
+*/
+app.use(serve(__dirname + '/../public', {
+  index: 'index.html'
+}))
 app.use(convert(jwt({
   secret: process.env.JWT_SECRET
 }).unless({
@@ -88,7 +90,9 @@ app.use(convert(jwt({
     '/v1/signup',
     '/v1/tools',
     '/favicon.ico',
-    '/v1/searchtester',
+    '/v1/data',
+    '/v1/data/searchUser',
+    '/v1/data/searchDate',
     '/v1/signuperic',
     '/v1/signuperic/verification',
     '/v1/signuperic/authentication',

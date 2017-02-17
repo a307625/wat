@@ -1,0 +1,26 @@
+#VIA{
+  font-family:Microsoft JhengHei;
+  font-weight: bolder;
+  font-size: 200px;
+  font-style: italic;
+  color: white;
+  text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+  line-height: 0px;
+}
+.page{
+  background: #272b30;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  height: 850px;
+}
+.contain{
+  height:400px;
+  background: #279dc1;
+  text-align:center;
+  position: relative;
+  top:225px;
+}
+.LOGO{
+  position: relative;
+  top:200px;
+  text-align: center;
+}

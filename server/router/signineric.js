@@ -31,6 +31,7 @@ router.post('/',
             ctx.response.body = {
               message: "登入成功",
               auth: user.auth,
+              id: user._id,
               login: true
             }
           }else{

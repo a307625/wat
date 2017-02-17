@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/signin.css">
+</head>
+<body>
+  <div class="page">
+    <div class="contain_signout">
+      <h1 id="signOutTitle">登出</h1>
+      <form class="signOutPage" id="signOutOption">
+        <br>
+          <input id="signOutButton" type="submit" value="登出">
+        </br>
+      </form>
+    </div>
+    <div class="contain_signin">
+      <h1 id="signInTitle">登入</h1>
+      <form class="signInPage" id="signInOption">
+        <br>信箱</br>
+        <input type="email" id="signIn_email" placeholder="輸入信箱" required>
+        <br>密碼</br>
+        <input type="password" id="signIn_password" placeholder="輸入密碼" required>
+        <p id="error_hint_signin"></p>
+        <br>
+          <input id="signInButton" type="submit" value="登入">
+        </br>
+      </form>
+      <h1 id="signInTitle">註冊</h1>
+      <div class="registerPage" id="signInOption">
+        <input id="registerButton" type="button" value="開始註冊">
+      </div>
+    </div>
+    <div class="contain_signup">
+      <h1 id="signUpTitle">註冊</h1>
+      <form class="signUpPage" id="signUpOption">
+          <br>姓名</br>
+          <input type="text" id="signUp_name" placeholder="輸入姓名" required>
+          <br>信箱</br>
+          <input type="email" id="signUp_email" placeholder="輸入信箱" required>
+          <br>密碼</br>
+          <input type="password" id="signUp_password1" placeholder="輸入密碼" required>
+          <br>再次輸入密碼</br>
+          <input type="password" id="signUp_password2" placeholder="再次輸入密碼" required>
+          <p id="error_hint_signup"></p>
+          <br>
+            <input id="signUpButton" type="submit" value="註冊">
+          </br>
+    </form>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="../utils/authentication.js"></script>
+  <script src="../router/signin.js"></script>
+</body>
+</html>

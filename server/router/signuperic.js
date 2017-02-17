@@ -39,10 +39,8 @@ router.post('/',
             ctx.request.body
           )
           await user.save()
-          console.log("UUUUUUUUUUUUUUUUer")
-          console.log(user)
           const token = await TokenStrategy['EMAIL'](email, nickname, user._id)
-          await mailTransport({email, nickname}, 'verification', token)
+          await mailTransport({email, nickname}, 'verification.html', token)
           ctx.status = 200
           ctx.message = "success"
           ctx.response.body = {
@@ -90,7 +88,7 @@ router.post('/authentication',
           }else{
             const token = await TokenStrategy['EMAIL'](email, nickname, userDBInfo._id)
             console.log(token)
-            await mailTransport({email, nickname}, 'verification', token)
+            await mailTransport({email, nickname}, 'verification.html', token)
             msgBox = msgStrategy['resend']()
           }
         }else {
@@ -124,8 +122,11 @@ router.get('/verification',
   async(ctx, next)=>{
     try {
       const token = ctx.request.query.token
+      console.log(token)
       const {email, nickname, _id} = await TokenVerify(token)
+      console.log(email)
       const check = await isUserUniqueSignUp({email, nickname, _id})
+      console.log(check)
       if(check){
         const tokenAuth = await TokenStrategy['JWT'](email, nickname)
         await User.findOneAndUpdate({email, nickname, _id },{
@@ -133,12 +134,16 @@ router.get('/verification',
             auth: tokenAuth
         })
         await User.find({email, "actived": false}).remove()
+        ctx.response.body = {
+          status: "success"
+        }
       }
       else{
         console.log("search err")
-      }
-      ctx.response.body = {
-        status: "success"
+        ctx.status = 400
+        ctx.response.body = {
+          status: "fail"
+        }
       }
     } catch (err) {
       if(err.output.statusCode){

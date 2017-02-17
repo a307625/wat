@@ -1,0 +1,89 @@
+#testButton, #recordButton, #searchButton{
+  font-weight: bolder;
+  font-family:Microsoft JhengHei;
+  outline: none; /*消除按下去後的藍色外框*/
+}
+#testButton:hover{
+  color: white;
+  background-color: #279dc1;
+  text-decoration:none;
+}
+#recordButton:hover{
+  color: white;
+  background-color: #279dc1;
+  text-decoration:none;
+}
+#searchButton:hover{
+  color: white;
+  background-color: #279dc1;
+  text-decoration:none;
+}
+#title_text{
+  display : inline;
+  font-weight:bolder;
+  font-family:Microsoft JhengHei;
+  line-height: 50px;
+}
+.page{
+  background: #272b30;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  height: 850px;
+}
+.title{
+  background: #279dc1;
+  height: 50px;
+  border-radius: 10px;
+  margin: 0px 50px 50px 50px;
+  text-align: center;
+  color: white;
+  border: solid #1a1a1a 1px;
+  position: relative;
+  top:50px;
+}
+.contain{
+  margin: 50px 50px 0px 50px;
+  display: flex;/*flex設定*/
+}
+.contain_items{
+  color:white;
+  float:left;
+  width: 10%;
+  height:600px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+  flex: none;/*不自動填滿剩下空間*/
+  position: relative;
+  top:50px;
+}
+.item{
+  background: #4ab9db;
+  font-size: 20px;
+  width: 100%;
+  height: 100px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top: solid #1a1a1a 1px;
+  border-left: solid #1a1a1a 1px;
+  border-bottom: solid #1a1a1a 1px;
+  margin-bottom: 0px;
+  text-align:center;
+	line-height: 100px;
+}
+.contain_page{
+  background-color: #4ab9db;
+  float:left;
+  width: 100%;
+  height:598px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top: solid #1a1a1a 1px;
+  border-right: solid #1a1a1a 1px;
+  border-bottom: solid #1a1a1a 1px;
+  margin-left: -2px;
+  margin-bottom: 50px;
+  flex:1;/*自動填滿剩下空間*/
+  position: relative;
+  top:50px;
+  bottom: 50px;
+}

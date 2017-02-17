@@ -1,0 +1,71 @@
+#font_format_Topbar{
+  font-weight: bolder;
+  font-family:Microsoft JhengHei;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+#font_format_p{
+  font-weight: bolder;
+  font-family:Microsoft JhengHei;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+#Topbar_signin {
+  border-left: solid rgba(255, 255, 255, 0.1) 1px;
+  border-right: solid rgba(0,0,0,0.2) 1px;
+  border-top: none;
+  border-bottom: none;
+  text-align: center;
+  background-color: #3a3f44;
+  color: #c8c8c8;
+  display: inline;
+  padding:0px 15px 0px 15px;
+  float: right;
+  text-decoration:none;
+  outline: none; /*消除按下去後的藍色外框*/
+}
+#Topbar_signin:hover{
+  color: white;
+  background-color: black;
+  text-decoration:none;
+}
+#Topbar_VIA {
+  border-left: solid rgba(255, 255, 255, 0.1) 1px;
+  border-right: solid rgba(0,0,0,0.2) 1px;
+  border-top: none;
+  border-bottom: none;
+  text-align: center;
+  background-color: #3a3f44;
+  color: #c8c8c8;
+  display: inline;
+  padding:0px 15px 0px 15px;
+  float: left;
+  text-decoration:none;
+  outline: none; /*消除按下去後的藍色外框*/
+}
+#Topbar_VIA:hover{
+  color: white;
+  background-color: black;
+  text-decoration:none;
+}
+.page{
+  background: #272b30;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  height: 850px;
+}
+.Topbar{
+  background-color: #3a3f44;
+  width:100%;
+  height: 49px;
+  color: white;
+  line-height: 47px;
+  text-align: right;
+  border: solid #1a1a1a 1px;
+}
+.Bottombar{
+  background-color: #1c1e22;
+  width:100%;
+  height: 100px;
+  color: white;
+  float: left;
+  text-align: center;
+  line-height: 90px;
+}

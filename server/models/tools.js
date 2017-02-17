@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
-import timestamps from 'mongoose-timestamp'
+// import timestamps from 'mongoose-timestamp'
+import moment from 'moment'
 
 mongoose.Promise = global.Promise
 
@@ -28,6 +29,13 @@ const ToolSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
+  createddate: {
+    type: Date,
+    default: moment(Date.now() + 8 * 60 * 60 * 1000)
+  },
+  updateddate: {
+    type: Date
+  },
   fw: {
     type: String,
     required: true
@@ -49,6 +57,6 @@ const ToolSchema = new Schema({
   EMAIL: EmailSchema
 })
 
-ToolSchema.plugin(timestamps)
+// ToolSchema.plugin(timestamps)
 
 export default mongoose.model('Tool', ToolSchema)
