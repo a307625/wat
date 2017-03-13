@@ -8,7 +8,7 @@ const MODULE=(function(){
       })
       .done(function(data,status){
         cb(null, data)
-        console.log(data)
+        // console.log(data)
       })
       .fail(function(data,status){
         cb(true, data)

@@ -93,6 +93,7 @@ app.use(convert(jwt({
     '/v1/data',
     '/v1/data/searchUser',
     '/v1/data/searchDate',
+    '/v1/data/searchResult',
     '/v1/signuperic',
     '/v1/signuperic/verification',
     '/v1/signuperic/authentication',

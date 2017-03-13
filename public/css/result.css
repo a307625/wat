@@ -1,0 +1,26 @@
+/*body{
+  background-color: #3a3f44;
+}*/
+.T1, .T2{
+  font-family:Microsoft JhengHei;
+  border-left: solid rgba(0,0,0,0.2) 1px;
+  border-right: solid rgba(0,0,0,0.3) 1px;
+  border-top: solid rgba(0,0,0,0.2) 1px;
+  border-bottom: solid rgba(0,0,0,0.3) 1px;
+  width: 200px;
+  text-align: center;
+}
+#title{
+  border-right: solid rgba(0,0,0,0.3) 1px;
+  font-weight: bolder;
+  color: #279dc1;
+  /*text-shadow: 1px 1px 1px black;*/
+}
+td{
+  border-bottom: solid rgba(0,0,0,0.2) 1px;
+}
+#tester, #fw, #tool, #time, #status{
+  color: #272b30;
+  font-weight: bolder;
+  /*text-shadow: 1px 1px 1px black;*/
+}

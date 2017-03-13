@@ -1,5 +1,5 @@
 import Router from 'koa-router'
-import User from '../models/users'
+import User from '../models/userseric'
 import H2 from '../models/h2'
 import CDM from '../models/CDM'
 import Boom from 'boom'
@@ -19,57 +19,79 @@ const router = new Router({
 
 
 
+// const SearchStrategy = {
+//   ['H2']:
+//     (Num, option)=>{
+//       H2modeStrategy[Num](option)
+//     }
+//   ,
+//   ['CDM']:
+//   (Num, option)=>{
+//     CDMmodeStrategy[Num](option)
+//   }
+// }
+//
+// const H2modeStrategy = {
+//   ['0']:
+//     async(option)=>{
+//       const data = await H2.find({toolname : option}, (err, result)=>{
+//       }
+//       )
+//       console.log('data')
+//       console.log(data)
+//     }
+//   ,
+//   ['1']:
+//     async(option)=>{
+//       const data = await H2.find({fw : option}, (err, result)=>{
+//       }
+//       )
+//       console.log('data')
+//       console.log(data)
+//     }
+// }
+//
+// const CDMmodeStrategy = {
+//   ['0']:
+//     async(option)=>{
+//       const data = await CDM.find({toolname : option}, (err, result)=>{
+//       }
+//       )
+//       console.log('data')
+//       console.log(data)
+//     }
+//   ,
+//   ['1']:
+//     async(option)=>{
+//       const data = await CDM.find({fw : option}, (err, result)=>{
+//       }
+//       )
+//       console.log('data')
+//       console.log(data)
+//     }
+// }
+
 const SearchStrategy = {
   ['H2']:
-    (Num, option)=>{
-      H2modeStrategy[Num](option)
+    async(option)=>{
+      const data = await H2.findById(option)
+      return data
+      console.log('data')
+      console.log(data)
     }
   ,
   ['CDM']:
-  (Num, option)=>{
-    CDMmodeStrategy[Num](option)
-  }
-}
-
-const H2modeStrategy = {
-  ['0']:
     async(option)=>{
-      const data = await H2.find({toolname : option}, (err, result)=>{
-      }
-      )
-      console.log('data')
-      console.log(data)
-    }
-  ,
-  ['1']:
-    async(option)=>{
-      const data = await H2.find({fw : option}, (err, result)=>{
-      }
-      )
+      const data = await CDM.findById(option)
+      return data
       console.log('data')
       console.log(data)
     }
 }
 
-const CDMmodeStrategy = {
-  ['0']:
-    async(option)=>{
-      const data = await CDM.find({toolname : option}, (err, result)=>{
-      }
-      )
-      console.log('data')
-      console.log(data)
-    }
-  ,
-  ['1']:
-    async(option)=>{
-      const data = await CDM.find({fw : option}, (err, result)=>{
-      }
-      )
-      console.log('data')
-      console.log(data)
-    }
-}
+
+
+
 
 router.get('/searchUser',
   validate({
@@ -149,28 +171,24 @@ router.get('/searchDate',
   }
 )
 
-router.get('/',
+
+router.get('/searchResult',
   validate({
-    'tool:query': ['require', 'tool is required'],
-    'caseNum:query': ['require', 'caseNum is required'],
-    'request:query': ['require', 'request is required']
+    'tester:query': ['require', 'tester id is required'],
+    'toolname:query': ['require', 'toolname is required'],
+    '_id:query': ['require', 'data id is required']
   }),
   async(ctx, next) => {
     try {
-      const tool = ctx.request.query.tool
-      const caseNum = ctx.request.query.caseNum
-      const request = ctx.request.query.request
-      console.log(request)
-      //await next()
-      const obj = {}
-      obj['mode'] = caseNum
-      await SearchStrategy[tool](caseNum, request)//awiat yield?
-      //console.log(data)
-
+      const {tester, toolname, _id} = ctx.request.query
+      const {nickname} = await User.findById(tester)
+      const result  = await SearchStrategy[toolname](_id)
       ctx.response.body = {
+        user: nickname,
+        dataPackage: result,
         status: 'success'
       }
-    } catch(err) {
+    } catch (err) {
       if (err.output.statusCode) {
         ctx.throw(err.output.statusCode, err)
       } else {
@@ -179,5 +197,37 @@ router.get('/',
     }
   }
 )
+
+
+// router.get('/',
+//   validate({
+//     'tool:query': ['require', 'tool is required'],
+//     'caseNum:query': ['require', 'caseNum is required'],
+//     'request:query': ['require', 'request is required']
+//   }),
+//   async(ctx, next) => {
+//     try {
+//       const tool = ctx.request.query.tool
+//       const caseNum = ctx.request.query.caseNum
+//       const request = ctx.request.query.request
+//       console.log(request)
+//       //await next()
+//       const obj = {}
+//       obj['mode'] = caseNum
+//       await SearchStrategy[tool](caseNum, request)//awiat yield?
+//       //console.log(data)
+//
+//       ctx.response.body = {
+//         status: 'success'
+//       }
+//     } catch(err) {
+//       if (err.output.statusCode) {
+//         ctx.throw(err.output.statusCode, err)
+//       } else {
+//         ctx.throw(500, err)
+//       }
+//     }
+//   }
+// )
 
 export default router
